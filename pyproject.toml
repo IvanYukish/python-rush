@@ -4,10 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["Ivan Yukish <iwan.jukisch@gmail.com>"]
 readme = "README.md"
-packages = [{include = "python_rush"}]
+packages = []
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.11"
 fastapi = "^0.95.1"
 uvicorn = "^0.22.0"
 

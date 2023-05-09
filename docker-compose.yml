@@ -1,19 +1,19 @@
 version: '3.1'
 
 services:
-  mongo:
-    image: mongo:5.0.16-focal
+  postgres:
+    image: postgres:13.4
     shm_size: 1g
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongo
-      MONGO_INITDB_ROOT_PASSWORD: mongo
+      POSTGRES_DB: postgres_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
-      - 27017:27017
-    command:
-      mongod --quiet --logpath /dev/null
+      - "5432:5432"
+    logging:
+      driver: none
+
 
   app:
     build: .
@@ -26,4 +26,4 @@ services:
     volumes:
       - .:/app
     depends_on:
-      - mongo
+      - postgres
